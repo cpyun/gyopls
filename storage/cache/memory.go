@@ -68,14 +68,14 @@ func (m *Memory) getItem(key string) (*item, error) {
 	}
 }
 
-func (m *Memory) Set(key string, val interface{}, expire int) error {
+func (m *Memory) Set(key string, val interface{}, expiration time.Duration) error {
 	s, err := cast.ToStringE(val)
 	if err != nil {
 		return err
 	}
 	item := &item{
 		Value:   s,
-		Expired: time.Now().Add(time.Duration(expire) * time.Second),
+		Expired: time.Now().Add(expiration),
 	}
 	return m.setItem(key, item)
 }

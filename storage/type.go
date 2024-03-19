@@ -14,7 +14,7 @@ type AdapterCache interface {
 	String() string
 	SetPrefix(string)
 	Get(key string) (string, error)
-	Set(key string, val interface{}, expire int) error
+	Set(key string, val interface{}, expiration time.Duration) error
 	Del(key string) error
 	HashGet(hk, key string) (string, error)
 	HashDel(hk, key string) error

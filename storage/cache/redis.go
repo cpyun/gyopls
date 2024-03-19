@@ -58,9 +58,9 @@ func (r *Redis) Get(key string) (string, error) {
 }
 
 // Set value with key and expire time
-func (r *Redis) Set(key string, val interface{}, expire int) error {
+func (r *Redis) Set(key string, val interface{}, expiration time.Duration) error {
 	key = r.prefix + key
-	return r.client.Set(r.ctx, key, val, time.Duration(expire)*time.Second).Err()
+	return r.client.Set(r.ctx, key, val, expiration).Err()
 }
 
 // Del delete key in redis

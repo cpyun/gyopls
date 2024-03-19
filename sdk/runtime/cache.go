@@ -55,8 +55,8 @@ func (e Cache) Get(key string) (string, error) {
 }
 
 // Set val in cache
-func (e Cache) Set(key string, val interface{}, expire int) error {
-	return e.store.Set(e.prefix+intervalTenant+key, val, expire)
+func (e Cache) Set(key string, val interface{}, expiration time.Duration) error {
+	return e.store.Set(e.prefix+intervalTenant+key, val, expiration)
 }
 
 // Del delete key in cache
